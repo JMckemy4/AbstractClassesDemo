@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,19 +12,22 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            /*
-             * Todo follow all comments!! 
-             */
+
 
             #region Vehicles
 
             /*
              * Create an abstract class called Vehicle
+            
              * The vehicle class shall have three string properties Year, Make, and Model
              * Set the defaults to something generic in the Vehicle class
              * Vehicle shall have an abstract method called DriveAbstract with no implementation
              * Vehicle shall have a virtual method called DriveVirtual with a base implementation.
              */
+
+
+
+
 
             /* 
              * Now create 2 non-abstract classes: Car and Motorcycle, that inherit from Vehicle
@@ -32,12 +37,59 @@ namespace ConsoleUI
             */
 
             // Create a list of Vehicle called vehicles
-
+            var vehicles = new List<Vehicle>();
             /*
              * Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
              * 
              * Set the properties with object initializer syntax
              */
+            Car car1 = new Car()
+            {
+                
+                Year = "2020",
+                Make = "Nissan",
+                Model = "Supra"
+           
+            };
+            Motorcycle motorcycle1 = new Motorcycle()
+            {
+                Year = "2020",
+                Make = "Harley",
+                Model = "960"
+            };
+            Vehicle vehicle1 = new Car()
+            {
+                Year = "2023",
+                Make = "BMW",
+                Model = "M3"
+            };
+        
+            Vehicle vehicle2 = new Motorcycle()
+            {
+                Year = "2021",
+                Make = "subaru",
+                Model = "WRX"
+            };
+
+            
+            
+
+            vehicles.Add(vehicle1);
+            vehicles.Add(vehicle2);
+            vehicles.Add(motorcycle1);
+            vehicles.Add(car1);
+
+            foreach (var vehicle in vehicles)
+            {
+                Console.WriteLine($"This is a {vehicle.Year} {vehicle.Make} {vehicle.Model}");
+            }
+
+            Console.WriteLine("------------------------------------------");
+            car1.DriveVirtual();
+            car1.DriveAbstract();
+            Console.WriteLine("-----------------------------------------");
+            motorcycle1.DriveVirtual();
+            motorcycle1.DriveAbstract();
 
             /*
              * Add the 4 vehicles to the list
